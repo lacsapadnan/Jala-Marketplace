@@ -40,6 +40,7 @@
                     <td>Gambar Produk</td>
                     <td>Nama produk &amp; penjual</td>
                     <td>Harga</td>
+                    <td>Berat</td>
                     <td>Menu</td>
                   </tr>
                 </thead>
@@ -60,9 +61,13 @@
                         <div class="product-title">{{ $cart->product->name }}</div>
                         <div class="product-subtitle">by {{ $cart->product->user->store_name }}</div>
                       </td>
-                      <td style="width: 35%;">
-                        <div class="product-title">${{ number_format($cart->product->price) }}</div>
-                        <div class="product-subtitle">USD</div>
+                      <td style="width: 25%;">
+                        <div class="product-title">Rp{{ number_format($cart->product->price) }}</div>
+                        <div class="product-subtitle">IDR</div>
+                      </td>
+                      <td style="width: 25%;">
+                        <div class="product-title">{{ $cart->product->weight }}</div>
+                        <div class="product-subtitle">Gram</div>
                       </td>
                       <td style="width: 20%;">
                         <form action="{{ route('cart-delete', $cart->products_id) }}" method="POST">

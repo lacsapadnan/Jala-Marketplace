@@ -12,10 +12,7 @@
 >
   <div class="container-fluid">
     <div class="dashboard-heading">
-      <h2 class="dashboard-title">Shirup Marzan</h2>
-      <p class="dashboard-subtitle">
-        Product Details
-      </p>
+      <h2 class="dashboard-title">Product Details</h2>
     </div>
     <div class="dashboard-content">
       <div class="row">
@@ -35,9 +32,9 @@
             <div class="card">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label>Product Name</label>
+                      <label>Nama Produk</label>
                       <input
                         type="text"
                         name="name"
@@ -46,14 +43,25 @@
                       />
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label>Price</label>
+                      <label>Harga</label>
                       <input
                         type="number"
                         name="price"
                         class="form-control"
                         value="{{ $product->price }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Berat (gram)</label>
+                      <input
+                        type="number"
+                        name="weight"
+                        class="form-control"
+                        value="{{ $product->weight }}"
                       />
                     </div>
                   </div>
