@@ -13,7 +13,7 @@ class DashboardSettingController extends Controller
         $user = Auth::user();
         $categories = Category::all();
 
-        return view('pages.dashboard-settings',[
+        return view('pages.dashboard-settings', [
             'user' => $user,
             'categories' => $categories
         ]);
@@ -23,7 +23,7 @@ class DashboardSettingController extends Controller
     {
         $user = Auth::user();
 
-        return view('pages.dashboard-account',[
+        return view('pages.dashboard-account', [
             'user' => $user
         ]);
     }
