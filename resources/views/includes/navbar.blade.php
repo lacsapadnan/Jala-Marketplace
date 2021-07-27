@@ -55,10 +55,16 @@
                         Hi, {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu">
-                        <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                        <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item">
+                        @if(Auth::check() && Auth::user()->roles  == "ADMIN")
+                            <a href="{{ route('admin-dashboard') }}" class="dropdown-item">Dashboard</a>
+                        @elseif (Auth::check())
+                            <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+                            <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item">
                             Settings
-                        </a>
+                             </a>
+                        @endif
+                        
+
                         <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

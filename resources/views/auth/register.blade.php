@@ -84,35 +84,19 @@
                             <p class="text-muted">
                                 Apakah anda juga ingin membuka toko?
                             </p>
-                            <div
-                            class="custom-control custom-radio custom-control-inline"
-                            >
-                                <input
-                                    type="radio"
-                                    class="custom-control-input"
-                                    name="is_store_open"
-                                    id="openStoreTrue"
-                                    v-model="is_store_open"
-                                    :value="true"
-                                />
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" name="is_store_open" id="openStoreTrue" v-model="is_store_open" :value="true" />
                                 <label for="openStoreTrue" class="custom-control-label">
                                     Iya, boleh
                                 </label>
                             </div>
-                            <div
-                                class="custom-control custom-radio custom-control-inline"
-                            >
-                                <input
-                                    type="radio"
-                                    class="custom-control-input"
-                                    name="is_store_open"
-                                    id="openStoreFalse"
-                                    v-model="is_store_open"
-                                    :value="false"
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" name="is_store_open" id="openStoreFalse" v-model="is_store_open" :value="false"
                                 />
                                 <label for="openStoreFalse" class="custom-control-label">
                                     Tidak, terimakasih
                                 </label>
+                                <input type="text" id="roles" class="form-control" name="roles" value="PEMBELi" hidden>
                             </div>
                         </div>
                         <div class="form-group" v-if="is_store_open">
@@ -128,6 +112,7 @@
                                 autocomplete="store_name" 
                                 autofocus
                             >
+                            <input type="text" id="roles" class="form-control" name="roles" value="PENJUAL" hidden>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -205,6 +190,16 @@
                         // handle success
                         console.log(response.data);
                     })
+            }
+        },
+        data() {
+            return {
+                name: "{{ old('name') }}",
+                email: "{{ old('email') }}",
+                is_store_open: true,
+                store_name: "",
+                roles: "PENJUAL",
+                email_unavailable: false
             }
         },
       });

@@ -88,7 +88,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'store_name' => isset($data['store_name']) ? $data['store_name'] : '',
             'categories_id' => isset($data['categories_id']) ? $data['categories_id'] : NULL,
-            'store_status' => $data['is_store_open'] ? 1 : 0
+            'store_status' => $data['is_store_open'] ? 1 : 0,
+            'roles' => $data['roles']
         ]);
     }
 
@@ -104,6 +105,6 @@ class RegisterController extends Controller
      */
     public function check(Request $request)
     {
-        return User::where('email', $request->email)->count() > 0 ? 'Unavailable' :"Available" ;
+        return User::where('email', $request->email)->count() > 0 ? 'Unavailable' : "Available";
     }
 }

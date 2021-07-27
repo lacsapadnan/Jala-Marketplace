@@ -14,8 +14,8 @@ class AddRolesFieldToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('roles')->default('USER'); 
-                // USER (Buyer dan Seller), ADMIN (All Access) 
+            $table->enum('roles', ['ADMIN', 'PEMBELI', 'PENJUAL'])->default('PEMBELI');
+            // USER (Buyer dan Seller), ADMIN (All Access) 
         });
     }
 
