@@ -23,7 +23,7 @@ data-aos="fade-up"
         <div class="card mb-2">
             <div class="card-body">
             <div class="dashboard-card-title">
-                Customer
+                Customer Terdaftar
             </div>
             <div class="dashboard-card-subtitle">
                 {{ number_format($customer) }}

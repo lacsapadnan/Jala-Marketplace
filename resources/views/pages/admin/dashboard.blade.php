@@ -23,7 +23,7 @@
                     <div class="card mb-2">
                         <div class="card-body">
                             <div class="dashboard-card-title">
-                                Customer
+                                Total User
                             </div>
                             <div class="dashboard-card-subtitle">
                                 {{ $customer }}
