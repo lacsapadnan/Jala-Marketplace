@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/categories', 'CategoryController@index')->name('categories');
@@ -63,13 +65,12 @@ Route::group(['middleware' => ['auth']], function () {
         ->name('dashboard-settings-account');
     Route::post('/dashboard/update/{redirect}', 'DashboardSettingController@update')
         ->name('dashboard-settings-redirect');
-
 });
 
 Route::prefix('admin')
     ->namespace('Admin')
-    ->middleware(['auth','admin'])
-    ->group(function() {
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
         Route::get('/', 'DashboardController@index')->name('admin-dashboard');
         Route::resource('category', 'CategoryController');
         Route::resource('user', 'UserController');
@@ -79,4 +80,3 @@ Route::prefix('admin')
     });
 
 Auth::routes();
-

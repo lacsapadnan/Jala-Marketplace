@@ -26,7 +26,8 @@
             <img src="/images/dashboard-logo.svg" alt="" class="my-4" />
           </div>
           <div class="list-group list-group-flush">
-            <a
+            @if(Auth::check() && Auth::user()->roles  == "PENJUAL")
+                <a
               href="{{ route('dashboard') }}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard')) ? 'active' : '' }} "
             >
@@ -67,6 +68,38 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
+            @elseif (Auth::check())
+<a
+              href="{{ route('dashboard') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard')) ? 'active' : '' }} "
+            >
+              Dashboard
+            </a>
+            <a
+              href="{{ route('dashboard-transaction') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transactions*')) ? 'active' : '' }} "
+            >
+              Transaksi
+            </a>
+            <a
+              href="{{ route('dashboard-settings-account') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/account*')) ? 'active' : '' }} "
+            >
+              Akun Saya
+            </a>
+            <a
+               href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"
+               class="list-group-item list-group-item-action"
+            >
+              Sign Out
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            @endif
+            
           </div>
         </div>
 
