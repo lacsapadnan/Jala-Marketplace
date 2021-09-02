@@ -9,12 +9,13 @@ use App\ProductGallery;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ProductRequest;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with(['galleries','category'])->get();
+        $products = Product::with(['galleries','category'])->where('users_id', Auth::user()->id)->get();
 
         return view('pages.dashboard-products',[
             'products' => $products
